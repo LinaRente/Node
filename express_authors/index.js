@@ -13,3 +13,5 @@ app.listen(port, () => {
 app.get('/authors/:id', (req, res) => {
     res.send(authors[req.params.id -1])
 });
+
+// Exercice 2
