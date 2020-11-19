@@ -7,7 +7,7 @@ mongoose.connect('mongodb://localhost:27017/mongoose_populate', {
 })
 
 const studentSchema = mongoose.Schema({
-    firstname: { 
+    firstName: { 
         type: String,
     },
     surname: {
