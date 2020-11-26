@@ -8,7 +8,7 @@ const LocalStrategy = require("passport-local");
 
 const User = require('./models/user')
 
-const port = 3010;
+const port = 3000;
 
 mongoose.connect(
     "mongodb://localhost:27017/authentification_exercise",
@@ -66,7 +66,7 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-    console.log('connecté', req.isAuthenticated());
+    // console.log('connecté', req.isAuthenticated());
     if (req.isAuthenticated()) {
         res.render('admin')
     } else {
@@ -75,7 +75,7 @@ app.get('/admin', (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
-    console.log('logout');
+    // console.log('logout');
     res.send('logout')
 });
 
@@ -88,22 +88,20 @@ app.post('/signup', (req, res) => {
     console.log('password', password);
 
     User.register({ username }, password, (err, user) => {
-        console.log('Bibi');
+        // console.log('1');
         if (err) {
             console.log(err)
             return res.render('signup');
         } else {
-            console.log('baba');
+            // console.log('2');
             passport.authenticate('local')(req, res, () => {
-                console.log('connecté signup', req.isAuthenticated());
+                // console.log('connecté signup', req.isAuthenticated());
                 res.redirect('/admin');
             });
         }
     });
-
-    console.log('hello');
+    // console.log('3');
 });
-
 
 
 app.listen(port, () => {
