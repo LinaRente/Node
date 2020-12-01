@@ -24,7 +24,6 @@ mongoose.connect("mongodb://localhost:27017/lebonplan",
     }
 );
 
-
 const app = express();
 // Express configuration
 app.engine("handlebars", exphbs());
@@ -32,8 +31,6 @@ app.set("view engine", "handlebars");
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-
 
 // Configuration de la session (cookie) pour l'auth
 app.use(
